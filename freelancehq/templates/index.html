@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+<!-- External CSS -->
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css')}}">
+{% endblock links %}
+ 
+{% block content %}
+    <div class="container alp">
+        <h1>Index</h1>
+    </div>
+{% endblock content %}
