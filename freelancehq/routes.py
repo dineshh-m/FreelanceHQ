@@ -26,7 +26,7 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        db = mysql.connector.connect(user='root', password='Pallavan$2', host='127.0.0.1', database='FreelanceHQ')
+        db = mysql.connector.connect(**config.db_credentials)
         
         cursor = db.cursor()
 
