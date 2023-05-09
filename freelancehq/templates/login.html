@@ -8,7 +8,7 @@
 <div class="body-wrapper">
   <main class="form-signin">
     <form action="{{ url_for('login') }}" method="POST">
-      <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+      <div class="row align-items-center"><img class="mb-4 align-items-center" src="{{ url_for('static', filename='images/logo.svg')}}" alt="" width="72" height="57"></div>
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
   
       <div class="form-floating">

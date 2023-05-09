@@ -6,7 +6,30 @@
 {% endblock links %}
  
 {% block content %}
-    <div class="container alp">
-        <h1>Index</h1>
+    <div class="container mt-5">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-lg-6">
+                <h1 class="display-1">Join the community of freelancers shaping the future of work</h1>
+                <a class="btn btn-primary ps-3 pe-3 pt-2 pb-2 m-3" href="{{ url_for('signup')}}">Get Started</a>
+            </div>
+            <div class="col-6">
+                <img class="d-none d-lg-block" src="{{ url_for('static', filename='images/freelancer.svg')}}" alt="Freelancer">
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-5 mb-5">
+            <div class="col-lg-6">
+                <img class="d-none d-sm-block" width="500" height="500" src="{{ url_for('static', filename='images/remote_work.svg')}}" alt="">
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <h2 class="display-1">Get variety of works in a few clicks.</h2>
+                <p class="display-6 text-muted">Streamline your projects and boost productivity with FreelanceHQ.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            
+        </div>
+
     </div>
 {% endblock content %}

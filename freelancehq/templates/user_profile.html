@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Hey {{ user.firstname }}, Let's get things ready for you </h1>
+
+    <form method="POST" action="{{ url_for('profile_setup', userid=user.userid)}}">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input name="email" type="email" class="form-control" id="exampleFormControlInput1" value="{{ user.email}}"  readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">First name</label>
+                    <input name="firstname" type="text" class="form-control" id="exampleFormControlInput1" value="{{ user.firstname }}"  readonly>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Last name</label>
+                    <input  name="lastname" type="text" class="form-control" id="exampleFormControlInput1" value="{{ user.lastname}}"  readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="mb-3">
+                <label for="">Gender</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" value="Male" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" value="Female" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Female
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" value="Other" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Others
+                    </label>
+                  </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="datepicker">Date of birth</label>
+                    <input name="dob" type="date" class="form-control" id="datepicker">
+                  </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Job role</label>
+                    <input name="jobrole" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Astonishing Graphics Designer">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <select class="form-control" id="country" name="country" required>
+                      <option value="" selected disabled>Select a country</option>
+                      <option value="United States">United States</option>
+                      <option value="Canada">Canada</option>
+                      <option value="India">India</option>
+                      <!-- Add more options for other countries -->
+                    </select>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <select class="form-control" id="state" name="state" required>
+                      <option value="" selected disabled>Select a state</option>
+                      <option value="Alabama">Alabama</option>
+                      <option value="Alaska">Alaska</option>
+                      <option value="Arizona">Arizona</option>
+                      <!-- Add more options for other states -->
+                    </select>
+                  </div>
+            </div>
+        </div>
+        <div class="row mt-3 mb-3">
+            <div class="form-group">
+                <label for="skills">Skills:</label>
+                <input type="text" class="form-control" id="skills" name="skills" placeholder="Add your skills with each one seperated with a comma.Ex: Web Design, React, Vanilla JavaScript" data-role="tagsinput">
+              </div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Write about yourself</label>
+                <textarea name="summary" class="form-control" id="exampleFormControlTextarea1" placeholder="I am an aspiring web developer interested in improving a self sustaining business to a higher level." rows="3"></textarea>
+              </div>
+        </div>
+
+        <button class="btn btn-primary mt-3 mb-3" type="submit">Create Account</button>
+    </form>
+</div>
+{% endblock content %}
