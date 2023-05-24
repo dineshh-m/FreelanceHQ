@@ -455,7 +455,37 @@ def client_workspace(client_workspace_id):
     cnx.close_cnx()
     return render_template('workspace.html', workspace=workspace, logged_user_id=logged_user_id ,messages=messages)
 
+@app.route("/delete_workspace", methods=['POST'])
+def delete_workspace():
+    workspace_id = request.form.get('workspace-id')
+    proposal_id = request.form.get('proposal-id')
+    print("WorkspaceID", workspace_id, "ProposalID", proposal_id)
+    cnx = db.DBConnection()
 
+    # Deleting chat messages
+    sql = "DELETE FROM messages WHERE workspace_id=%s"
+    values = (workspace_id, )
+
+    cnx.execute(sql, values)
+
+    # Deleting the workspace
+    sql = "DELETE FROM workspace WHERE id=%s"
+    values = (workspace_id, )
+
+    cnx.execute(sql, values)
+    
+    # Deleting the proposals
+    sql = "DELETE FROM proposals WHERE id=%s"
+    values = (proposal_id, )
+
+    cnx.execute(sql, values)
+
+    cnx.commit()
+
+    print('workspace-id')
+
+    cnx.close_cnx()
+    return redirect(url_for('home'))
 
 # Just for debugging stuffs
 @app.route("/debug", methods=['POST'])

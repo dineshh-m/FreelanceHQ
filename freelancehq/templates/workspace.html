@@ -4,6 +4,7 @@
 {% block links %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/workspace.css')}}">
     <script src="{{ url_for('static', filename='js/message.js')}}" defer></script>
+    <script src="{{ url_for('static', filename='js/workspace.js')}}" defer></script>
 {% endblock links %}
 
 {% block nav %}
@@ -45,8 +46,12 @@
                 <p>{{ workspace.project_post.deadline }}</p>
               </div>
               {% if workspace.project_post.client_id == logged_user_id %}
-              <div class="row mt-4 justify-content-center align-items-center  ">
-                <div class="col"><a href="" class="btn btn-success">Close Workspace</a></div>
+              <div class="row mt-4 justify-content-center align-items-center">
+                <div class="col"><form action="/delete_workspace" method="POST">
+                  <input type="hidden" name="workspace-id" value="{{ workspace.client_workspace_id }}">
+                  <input type="hidden" name="proposal-id" value="{{ workspace.proposal_id }}">
+                  <button type="submit" class="btn btn-success close-workspace">Close Workspace</button>
+                </form></div>
               </div>
               {% endif %}
             </div>
