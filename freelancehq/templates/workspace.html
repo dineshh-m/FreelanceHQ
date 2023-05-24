@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/workspace.css')}}">
+    <script src="{{ url_for('static', filename='js/message.js')}}" defer></script>
+{% endblock links %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light bg-pl-1">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('home')}}">FreelanceHQ Workspace</a>
+    </div>
+  </nav>
+{% endblock nav %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3 dashbar" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <button class="nav-link active mb-5" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"> Home</button>
+          <button class="nav-link mb-5" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Messages</button>
+          <!-- <button class="nav-link mb-5" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Updates</button> -->
+          <button class="nav-link mb-5" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Payments</button>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active tab-panel" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+            <div class="container bg-plade  p-4">
+              <div class="row">
+                <p>Title: {{ workspace.project_post.title }}<p>
+              </div>
+              <div class="row">
+                <p>Description: {{ workspace.project_post.description }}<p></p>
+              </div>
+
+              <div class="row">
+                <div class="d-flex skills">
+                  {% for skill in workspace.project_post.project_skills %}
+                    <div class="skill">{{ skill }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="row mt-3">
+                <p>{{ workspace.project_post.deadline }}</p>
+              </div>
+              {% if workspace.project_post.client_id == logged_user_id %}
+              <div class="row mt-4 justify-content-center align-items-center  ">
+                <div class="col"><a href="" class="btn btn-success">Close Workspace</a></div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="tab-pane fade tab-panel" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+            
+            <div class="container bg-plade p-5">
+              
+                <!-- <div class="send-messages">
+                  <div id="workspace" data-workspace-id="{{ workspace.client_workspace_id }}"></div>
+                  <div id="userid" data-user-id="{{ logged_user_id }}"></div>
+                  <div class="row mb-4">
+                    <label for="" class="display-6">Type your message here</label>
+                  </div>
+                  <div class="row">
+                    <textarea class="form-control" name="" id="chatbox" cols="100" rows="3"></textarea>
+                  </div>
+                  <div class="row d-flex justify-content-center mt-4">
+                    <div class="col"><button id="send-btn" class="btn btn-secondary">Send Message</button></div>
+                  </div>
+                </div> -->
+
+                <div class="chat-container">
+                  <div class="container received-messages">
+                    {% for message in messages %}
+                        {% if message.sender_id == logged_user_id %}
+                        <div class="you d-flex justify-content-between">
+                          <div><span class="font-weight-bold">You: </span>{{ message.content }}</div>
+                          <div class="time text-muted">{{ message.sent_at }}</div>
+                          <div class="status"><img width="20px" src="{{ url_for('static', filename='images/done.svg')}}" alt=""></div>
+                        </div>
+                        {% else %}
+                        <div class="client d-flex justify-content-between">
+                          <div><span class="font-weight-bold">Client: </span>{{ message.content }}</div>
+                          <div class="time text-muted">{{ message.sent_at }}</div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="send-messages mt-5">
+                    <div id="workspace" data-workspace-id="{{ workspace.client_workspace_id }}"></div>
+                    <div id="userid" data-user-id="{{ logged_user_id }}"></div>
+                    <div class="row">
+                      <textarea class="form-control" name="" id="chatbox" cols="90" rows="1"></textarea>
+                    </div>
+                    <div class="row d-flex justify-content-center mt-4">
+                      <div class="col"><button id="send-btn" class="btn btn-secondary">Send Message</button></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="tab-pane fade tab-panel" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">...</div>
+        </div>
+      </div>
+</div>
+
+{% endblock content %}

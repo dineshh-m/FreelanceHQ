@@ -1,7 +1,12 @@
 body{
     background: #f7f7ff;
-    margin-top:20px;
+    /* margin-top:20px; */
 }
+
+.container {
+    margin-top: 20px;
+}
+
 .card {
     position: relative;
     display: flex;
@@ -17,4 +22,23 @@ body{
 }
 .me-2 {
     margin-right: .5rem!important;
+}
+
+.skills {
+    list-style-type: none;
+    display: flex;
+    gap: 0.5rem;
+    overflow: auto;
+}
+
+.skill {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 0.5rem 0.8rem;
+}
+
+.mini-skill {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 0.2rem 0.4rem;
 }

@@ -1,0 +1,45 @@
+body{
+    background: #f7f7ff;
+    /* margin-top:20px; */
+}
+
+.time {
+    font-size: 9px !important
+}
+
+.socials i {
+    margin-right: 14px;
+    font-size: 17px;
+    color: #d2c8c8;
+    cursor: pointer
+}
+
+.feed-image img {
+    width: 100%;
+    height: auto
+}
+
+.profile-pic {
+    border-width: 5px;
+}
+
+.profile-user-name {
+    text-decoration: none;
+}
+
+.skills {
+    overflow: auto;
+}
+/* .skill {
+    padding: 0.2rem 0.4rem;
+    border: 1px solid black;
+    border-radius: 20px;
+} */
+
+.svg-dark {
+    fill: black;
+}
+
+.svg-link:hover .svg-dark{
+    fill: white;
+}

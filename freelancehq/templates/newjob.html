@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/newjob.css') }}">
+    <script src="{{ url_for('static', filename='js/suggest.js') }}" defer></script>
+{% endblock links %}
+
+{% block content %}
+
+    <div class="container">
+        <form id="post-form" action="{{ url_for('newjob')}}" method="POST">
+
+            <div class="row display-5 mb-4">
+                New Job post
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input name="title" type="text" class="form-control" id="title" placeholder="Want a Creative Web Developer" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Job Description</label>
+                        <textarea name="description" type="text" class="form-control" rows="5" id="description" placeholder="Write a brief description about the job" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="mb-3">
+                        <label for="budget" class="form-label">Budget</label>
+                        <input name="budget" type="number" class="form-control" rows="5" id="description"  required>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for="budget" class="form-label">Currency</label>
+                    <select class="form-select form-select-md" name="currency" aria-label=".form-select-sm example">
+                        <option selected>Open this select menu</option>
+                        <option value="INR">Rupees</option>
+                        <option value="USD">USD</option>
+                        <option value="CND">CND</option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="row mt-3 mb-3">
+                <div class="form-group">
+                    <label for="skills">Skills:</label>
+                    <textarea id="my-textarea" type="text" class="form-control" id="skills" name="skills" placeholder="Add your skills with each one seperated with a comma.Ex: Web Design, React, Vanilla JavaScript" data-role="tagsinput"></textarea>
+                    <div id="suggestion-box"></div>
+                  </div>
+            </div>
+    
+            <div class="container" id="skill-box">
+                
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="datepicker">Deadline for the project</label>
+                        <input name="deadline" type="date" class="form-control" id="datepicker">
+                      </div>
+                </div>
+            </div>
+
+            <button id="post-submit" type="submit" class="btn btn-primary mt-4">Create Post</button>
+        </form>
+    </div>
+{% endblock content %}

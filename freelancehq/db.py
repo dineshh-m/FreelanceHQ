@@ -7,9 +7,16 @@ class DBConnection:
         self.cursor = self.cnx.cursor()
 
     def execute(self, sql, values):
-        self.cursor.execute(sql, values)
+        try:
+            self.cursor.execute(sql, values)
+        except Exception as e:
+            print(e)
+            self.close_cnx()
 
 
     def close_cnx(self):
         self.cursor.close()
         self.cnx.close()
+
+    def commit(self):
+        self.cnx.commit()

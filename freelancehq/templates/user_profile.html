@@ -1,10 +1,15 @@
 {% extends "layout.html" %}
 
+{% block links %}
+<script src="{{ url_for('static', filename='js/suggest.js')}}" defer></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user_profile.css')}}">
+{% endblock links %}
+
 {% block content %}
 <div class="container">
     <h1>Hey {{ user.firstname }}, Let's get things ready for you </h1>
 
-    <form method="POST" action="{{ url_for('profile_setup', userid=user.userid)}}">
+    <form id="profile-form" method="POST" action="{{ url_for('profile_setup', userid=user.userid)}}">
         <div class="row">
             <div class="col-lg-4">
                 <div class="mb-3">
@@ -97,8 +102,13 @@
         <div class="row mt-3 mb-3">
             <div class="form-group">
                 <label for="skills">Skills:</label>
-                <input type="text" class="form-control" id="skills" name="skills" placeholder="Add your skills with each one seperated with a comma.Ex: Web Design, React, Vanilla JavaScript" data-role="tagsinput">
+                <textarea id="my-textarea" type="text" class="form-control" id="skills" name="skills" placeholder="Add your skills with each one seperated with a comma.Ex: Web Design, React, Vanilla JavaScript" data-role="tagsinput"></textarea>
+                <div id="suggestion-box"></div>
               </div>
+        </div>
+
+        <div class="container" id="skill-box">
+
         </div>
 
         <div class="row">
@@ -108,7 +118,7 @@
               </div>
         </div>
 
-        <button class="btn btn-primary mt-3 mb-3" type="submit">Create Account</button>
+        <button id="profile-submit" class="btn btn-primary mt-3 mb-3" type="submit">Create Account</button>
     </form>
 </div>
 {% endblock content %}

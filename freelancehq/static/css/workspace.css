@@ -1,0 +1,72 @@
+body {
+    background: #f7f7ff;
+}
+
+.dashbar {
+    background-color: #e0e0f2;
+    width: 25%;
+}
+
+.skill {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    margin-right: 0.4rem;
+}
+
+.bg-plade {
+    background-color: #eee;
+}
+
+.chat-container {
+    position: relative; /* Ensure relative positioning for proper alignment */
+  }
+  
+  #chat-textarea {
+    position: absolute;
+    bottom: 0; /* Position the textarea at the bottom of the div */
+  }
+.text-info {
+    color: #48b0f7 !important;
+}
+
+.chat-container {
+    background-color: aliceblue;
+    padding: 2rem;
+}
+
+.received-messages {
+    margin-top: 2rem;
+    height: 350px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    background-color: aliceblue;
+    padding: 1rem 1rem;
+}
+
+.messages-container {
+    overflow-y: scroll;
+    background-color: aliceblue;
+}
+
+.you {
+    background-color: thistle;
+    padding: 0.4rem 0.7rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    border-bottom-right-radius: 0%;
+    margin-left: 5rem;
+}
+
+.client {
+    background-color: wheat;
+    padding: 0.4rem 0.7rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    border-bottom-left-radius: 0%;
+    margin-right: 5rem;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}

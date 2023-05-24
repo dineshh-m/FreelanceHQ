@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
-{% block links %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/account.css')}}">
+{% block links%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css')}}">
 {% endblock links %}
 
-
 {% block content %}
+
 <div class="container">
     <div class="main-body">
         <div class="row">
@@ -24,8 +24,11 @@
                                 <p class="text-muted font-size-sm">{{user_profile.living_area}}</p>
                                 <!-- <h5>About</h5> -->
                                 <p>{{ user_profile.summary }}</p>
-                                <a class="btn btn-primary" href="{{ url_for('newjob')}}">New Post</a>
-                                <button class="btn btn-outline-primary">Message</button>
+                                {% if user_itself %}
+                                    <a class="btn btn-primary" href="{{ url_for('newjob')}}">New Post</a>
+                                {% else %}
+                                    <button class="btn btn-outline-primary">Message</button>
+                                {% endif %}
                             </div>
                         </div>
                         <hr class="my-4">
@@ -55,8 +58,11 @@
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
+                                {% if user_itself %}
                                 <input type="text" class="form-control" value="{{ user.firstname + ' ' + user.lastname }}" readonly>
-                               
+                                {% else %}
+                                <p>{{ user.firstname + ' ' + user.lastname }}</p>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -64,8 +70,11 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
+                                {% if user_itself %}
                                 <input type="text" class="form-control" value="{{ user.email }}" readonly>
-                                
+                                {% else %}
+                                <p>{{ user.email }}</p>
+                                {% endif %}
                             </div>
                         </div>
                         
@@ -74,13 +83,19 @@
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
+                                {% if user_itself %}
                                 <input type="text" class="form-control" value="{{ user_profile.living_area }}">
+                                {% else %}
+                                <p>{{ user_profile.living_area }}</p>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9 text-secondary">
+                                {% if user_itself %}
                                 <input type="button" class="btn btn-primary px-4" value="Save Changes">
+                                {% endif %}
                             </div>
                         </div>
                        
@@ -115,19 +130,19 @@
                                             <p class="text-muted">{{ post.relative_time }}</p>
                                         </div>
 
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
-                                              <!-- <img width="20" height="20" src="{{ url_for('static', filename='images/three_dots.svg')}}" alt=""> -->
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                              <li><button class="dropdown-item" type="button">Action</button></li>
-                                              <li><button class="dropdown-item" type="button">Another action</button></li>
-                                              <li><button class="dropdown-item" type="button">Something else here</button></li>
-                                            </ul>
-                                          </div>
-
-                                          
-                                        
+                                        {% if user_itself %}
+                                            <div class="dropdown">
+                                                <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
+                                                <!-- <img width="20" height="20" src="{{ url_for('static', filename='images/three_dots.svg')}}" alt=""> -->
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                <li><button class="dropdown-item" type="button">Action</button></li>
+                                                <li><button class="dropdown-item" type="button">Another action</button></li>
+                                                <li><button class="dropdown-item" type="button">Something else here</button></li>
+                                                </ul>
+                                            </div>
+                                          {% endif %}
+                    
                                     </div>
                                 </div>
                                 <div class="col mb-2">
@@ -155,4 +170,5 @@
         </div>
     </div>
 </div>
+
 {% endblock content %}

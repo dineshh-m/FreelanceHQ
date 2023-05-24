@@ -8,3 +8,4 @@ app = Flask(__name__)
 app.secret_key = 'OurSecretKey'
 
 from freelancehq import routes
+from freelancehq import api

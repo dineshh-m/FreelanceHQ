@@ -1,0 +1,30 @@
+#suggestion-box {
+   
+    overflow: auto;
+    height: 10rem;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+    display: none;
+  }
+  
+  .suggestion {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .suggestion:hover {
+    background-color: #f2f2f2;
+  }
+  
+#skill-box {
+    display: flex;
+}
+
+.skill {
+    display: inline;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 0.2rem 0.8rem;
+    margin-right: 0.5rem;
+}
